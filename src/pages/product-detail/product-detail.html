@@ -1,0 +1,76 @@
+
+<ion-header class="main-header remove" >
+    <ion-navbar >
+        <ion-title *ngIf="!filter.globalSearchData" >{{prod_cat.main_category |titlecase}} </ion-title>
+        <ion-title *ngIf="filter.globalSearchData" >{{filter.categoryName | titlecase}} - Product List</ion-title>
+    </ion-navbar>
+    <ion-toolbar class="primary-bg">
+        <div class="search add-search">
+            <div class="filter">
+                <ion-searchbar type='text' placeholder="{{ 'Search' | translate }}" name='search'  [(ngModel)]="filter.search" (ngModelChange)="filter.search=='' ? getProductList(cat_id,filter.search) : ''" (keyup.enter)="getProductList(cat_id,filter.search)"></ion-searchbar>
+            </div>
+        </div>
+    </ion-toolbar>
+    
+</ion-header>
+
+
+<ion-content>
+    <ion-refresher (ionRefresh)="doRefresh($event)">
+        <ion-refresher-content pullingIcon="arrow-dropdown" pullingText="Pull to refresh" refreshingSpinner="circles" refreshingText="Refreshing...">
+        </ion-refresher-content>
+    </ion-refresher>
+    
+    
+    <!-- <div class="padding16">
+        <div class="grid-layout">
+            <div class="product-data two-column" (click)="goOnProductSubDetailPage(list.id)" *ngFor="let list of prod_list;let i=index">
+                <div class="image-thubmnail">
+                    <img *ngIf="list.actual_image_name" src="{{url + list.actual_image_name}}">
+                    <i class="material-icons" *ngIf="!list.actual_image_name">perm_media</i>
+                </div>
+                <div class="content">
+                    <h6>{{list.product_name ? list.product_name : list.desc}}</h6>
+                    <p> &#x20B9; {{list.price}}</p>
+                </div>
+            </div>
+        </div>  
+    </div> -->
+    <div  class="padding16">
+        <div class="grid-layout">
+            <div class="product-data two-column" (click)="goOnProductSubDetailPage(list.id)" *ngFor="let list of prod_list;let i=index">
+                <div class="image-thubmnail">
+                    <img *ngIf="list.actual_image_name" src="{{url + list.actual_image_name}}">
+                    <i class="material-icons" *ngIf="!list.actual_image_name">perm_media</i>
+                </div>
+                <div class="content">
+                    <h6>{{list.product_name}}</h6>
+                    <div class="code">
+                        <span>{{list.material_code}}</span>
+                        <span>&#x20B9; {{list.price}}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        
+        <!-- <div *ngIf="no_rec" class="data-not">
+            <img src="assets/imgs/data-not-found.png">
+        </div> -->
+    </div>
+    <div *ngIf="no_rec" class="data-not">
+        <img src="assets/imgs/data-not-found.png">
+    </div>
+    
+    
+    
+    
+    
+    
+    <ion-infinite-scroll threshold="100px" (ionInfinite)="loadData($event)" *ngIf="flag!=1">
+        <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Loading more data...">
+        </ion-infinite-scroll-content>
+        
+    </ion-infinite-scroll>
+    
+</ion-content>

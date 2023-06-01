@@ -1,0 +1,23 @@
+
+<ion-header>
+	<ion-navbar>
+		<ion-title>aboutus-modal</ion-title>
+	</ion-navbar>
+</ion-header>
+
+<ion-content padding>
+	<div class="main-modal" >
+		<div class="modal-box">
+			<h1>{{ 'Grafdoer' | translate }}</h1>
+			<h2>{{ 'Your request to access the Grafdoer  is under review. You will be able to log in as soon as the overseeing dealer acknowledges your application.' | translate }}
+				<br>
+				{{ 'Meanwhile, you can contact us' | translate }}<a href="tel:7827966945">7827966945</a> {{'or mail us' | translate }}<a href="mailto:info@grafdoer.com" target="_blank">info@grafdoer.com</a> {{ 'if you any question' | translate }}
+				
+			</h2>
+		</div>
+		
+		<div class="modal-cls" (click)="gotoHomePage()">
+			<i class="material-icons">cancel</i>
+		</div>
+	</div>		
+</ion-content>

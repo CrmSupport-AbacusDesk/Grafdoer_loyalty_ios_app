@@ -1,0 +1,28 @@
+
+
+<ion-content  class="module">
+  
+  <div class="pop-imge" *ngIf="mode == 'profile'">
+    <img src="{{url+profile_pic}}">
+    <a (click)="closeModal()"><i class="material-icons">
+      clear
+    </i></a>
+  </div>
+  <!-- <div class="pop-imge" *ngIf="mode != 'profile'">
+    <img [src]="profile_pic">
+    <a (click)="closeModal()"><i class="material-icons">
+      clear
+    </i>
+  </a>
+</div> -->
+
+<div class="pop-imge" *ngIf="mode == 'product_img'">
+  <img src="{{product_image_url+profile_pic}}">
+  <a (click)="closeModal()"><i class="material-icons">
+    clear
+  </i>
+</a>
+</div>
+
+
+</ion-content>

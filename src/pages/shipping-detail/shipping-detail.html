@@ -1,0 +1,75 @@
+<ion-header class="main-header remove">
+	<ion-navbar>
+		<ion-title>Redeem  Detail</ion-title>
+	</ion-navbar>
+</ion-header>
+
+<ion-content padding>
+	
+	<div class="conatiner">
+		<div class="content-box mt0 mb10">
+			<h2>{{gift_detail.title}}</h2>
+		</div>
+		<div class="img-box">
+			<img [src]="gift_detail.image">
+		</div>
+		<div class="content-box">
+			<h2>{{gift_detail.gift_title}}</h2>
+			<p><strong>Points</strong> <span>{{gift_detail.coupon_points}}</span></p>
+			<p><strong>Gift Status</strong> {{karigar_gift.receive_status}}</p>
+			<p><strong>Specification</strong> {{gift_detail.gift_title}}</p>
+		</div>
+	</div>
+
+	<div class="cs-card mt16">
+		<h5>Bank Detail</h5>
+		<table>
+			<tr>
+				<td class="w120">Bank Name</td>
+				<td>{{karigar_gift.bank_name}}</td>
+			</tr>
+			<tr>
+				<td>Account Holder</td>
+				<td>{{karigar_gift.account_holder_name}}</td>
+			</tr>
+			<tr>
+				<td>Account NO.</td>
+				<td>{{karigar_gift.bank_account_number}}</td>
+			</tr>
+			<tr>
+				<td>IFSC Code</td>
+				<td>{{karigar_gift.bank_ifsc_code}}</td>
+			</tr>
+		</table>
+	</div>
+
+	<div class="cs-card mt16" *ngIf="shipped_detail.shipped_type">
+		<h5>Shipping Detail</h5>
+		<table>
+			<tr>
+				<td class="w140">Shipped Type</td>
+				<td>{{shipped_detail.shipped_type}}</td>
+			</tr>
+			<tr>
+				<td>Estimate Delivery Date</td>
+				<td>{{shipped_detail.estimated_date}}</td>
+			</tr>
+			<tr>
+				<td>Shipping Information</td>
+				<td>{{shipped_detail.shipping_information}}</td>
+			</tr>
+		</table>
+	</div>
+
+
+
+
+
+
+
+	<div class="padding16" *ngIf="karigar_gift.receive_status != 'Received' ">
+		<button ion-button color="success" full round (click)="recvConfirmation(karigar_gift.id)">Click Here if you Recieve</button>
+	</div>
+	<div class="h50">&nbsp;</div>
+</ion-content>
+

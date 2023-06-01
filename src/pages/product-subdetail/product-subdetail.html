@@ -1,0 +1,70 @@
+<ion-header class="main-header remove">
+    <ion-navbar>
+        <ion-title>{{ 'Product Detail' | translate }}</ion-title>
+        <ion-buttons end>
+            <button ion-button icon-only color="light" (click)="shareproduct()">
+                <ion-icon name="md-share"></ion-icon>
+            </button>
+        </ion-buttons>
+    </ion-navbar>
+</ion-header>
+
+<ion-content> 
+    <div class="detais mt10">
+        <div class="detail-prize">
+            <h4>{{prod_detail.product_name ? prod_detail.product_name : prod_detail.desc}}</h4>
+            <!-- <h3 class="m0"><span>₹</span>{{prod_detail.price}}/-</h3> -->
+        </div>
+       
+        
+        <ion-slides  pager="false">
+            <ng-container *ngIf="prod_image.length">
+                <ion-slide *ngFor="let image of prod_image">
+              
+                    <img src="{{url+image.actual_image_name}}" (click)="viewDetail(image.actual_image_name)">
+                </ion-slide>
+            </ng-container>
+            
+            <ion-slide *ngIf="!prod_image.length">
+                <i  class="material-icons" style="font-size: 50px; padding: 60px; color: #c3c3c3;">perm_media</i>
+            </ion-slide>
+        </ion-slides>
+      
+            
+            <div class="padding16">
+                <div class="adhar">
+                    <table>
+                        <tr>
+                            <th class="w100">{{'Category' | translate}}</th>
+                            <td>{{prod_detail.main_category | titlecase}}</td>
+                        </tr>
+                        <tr>
+                            <th>{{'Subcategory' | translate}}</th>
+                            <td>{{prod_detail.sub_category | titlecase}}</td>
+                        </tr>
+                        <tr>
+                            <th>{{'Code' | translate}}</th>
+                            <td>{{prod_detail.material_code | titlecase}}</td>
+                        </tr>
+                        <tr>
+                            <th>{{'MRP' | translate}}</th>
+                            <td>{{prod_detail.price}}</td>
+                        </tr>
+                        <tr *ngIf="prod_detail.product_name" prod_detail.product_name>
+                            <th>{{'Description' | translate}}</th>
+                            <td>{{prod_detail.desc?prod_detail.desc:'NA'}}</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+                   </div>
+        </ion-content>
+        
+       
+        
+        
+        
+        
+        
+        
+        

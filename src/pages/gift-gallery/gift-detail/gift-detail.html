@@ -1,0 +1,83 @@
+<ion-header class="main-header remove">
+    <ion-navbar>
+        <ion-title>{{ 'Gift Gallery' | translate}}</ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content>   
+    <div class="top-nav nav-adjust">
+        <!-- <p>{{gift_detail.title |titlecase}} offer  Point</p> -->
+        <p>{{ 'Balance Points' | translate }}</p>
+        <h1>{{total_balance || 0}}</h1>
+    </div>
+
+
+    <div class="listings">
+        <button ion-item>
+		<div class="head-detail">
+			<div class="detail">
+				<h1>{{ gift_detail.gift_title | titlecase}}</h1>
+			</div>
+		</div> 
+		<div class="point-type">
+			<div class="point-value">
+				<p style="color: #ff0000;">{{gift_detail.coupon_points}} </p>
+				<span>Coupon Points</span>
+			</div>
+			<div class="point-value">
+				<p style="color: #449112;">{{gift_detail.reward_points}}</p>
+				<span>Reward Points</span>
+			</div>
+		</div> 
+	</button>
+    </div>
+
+
+    <div class="margin-padding pt0 pb0">
+        <div class="phone">
+            <div class="phone-img">
+                <img *ngIf="gift_detail.image" src="{{url+gift_detail.image}}">
+            </div>
+        </div>
+        <!-- (click)="goOnOfferDetailPage(gift_detail.offer_id)" -->
+        <div class="detail-list">
+            <div class="detail">
+                <div class="img-section">
+                    <img src="{{url+gift_detail.offer_banner}}">
+                </div>
+                <div class="info">
+                    <h1>{{  gift_detail.title | titlecase}}</h1>
+                    <p><span>{{ 'Valid Upto' | translate }} :</span> {{gift_detail.end_date | date:'d MMMM y'}}</p>
+
+                </div>
+            </div>
+            <!-- <div class="product-icon">
+				<i class="material-icons">keyboard_arrow_right</i>
+			</div> -->
+        </div>
+        <!-- <div class="rating">
+			<i class="material-icons" [ngClass]="{'active':rating_star>=1}">star_rate</i>
+			<i class="material-icons" [ngClass]="{'active':rating_star>=2}">star_rate</i>
+			<i class="material-icons" [ngClass]="{'active':rating_star>=3}">star_rate</i>
+			<i class="material-icons" [ngClass]="{'active':rating_star>=4}">star_rate</i>
+			<i class="material-icons" [ngClass]="{'active':rating_star>=5}">star_rate</i>
+			<p>{{rating_star}} Star - {{gift_detail.votes}} Votes </p>
+		</div> -->
+        <div class="lorem-text">
+            <p>
+                <!-- <Strong>{{ 'Specification' | translate }} : <div [innerHTML]="lang !='en' ? gift_detail.hin_gift_specification : gift_detail.gift_specification"></div> </Strong> -->
+                <Strong>{{ 'Specification' | translate }} : {{  gift_detail.gift_specification}}</Strong>
+            </p>
+        </div>
+        <button ion-button class="cs-btn btn-radius mb0" (click)="presentCancelPolicyModal()" *ngIf="total_balance >= gift_detail.coupon_points">{{ 'Send Redeem Request' | translate}}</button>
+        <div class="h32"></div>
+    </div>
+    <!-- <div class="fix-item">
+		<p>Rate a Gift</p>
+		<i class="material-icons" [ngClass]="{'active':star>=1}" (click)="rating('1')">star_rate</i>
+		<i class="material-icons" [ngClass]="{'active':star>=2}" (click)="rating('2')">star_rate</i>
+		<i class="material-icons" [ngClass]="{'active':star>=3}" (click)="rating('3')">star_rate</i>
+		<i class="material-icons" [ngClass]="{'active':star>=4}" (click)="rating('4')">star_rate</i>
+		<i class="material-icons" [ngClass]="{'active':star>=5}" (click)="rating('5')">star_rate</i>
+	</div>     -->
+</ion-content>

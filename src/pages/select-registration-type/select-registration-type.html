@@ -1,0 +1,53 @@
+<ion-content>
+	
+	<div class="cs-header2">
+		<div class="login-back">
+			<button (click)="onBackButtonClickHanlder()"><i class="material-icons">keyboard_backspace</i></button>
+		</div>
+		<img class="logo" src="assets/imgs/logo.png" alt="">
+	</div>
+	
+	
+	
+	<ion-list radio-group [(ngModel)]="data.registerType" >
+		<ion-list-header class="border-heading">
+			{{'Select Registration Type' | translate}}
+			<!-- Select Registration Type -->
+		</ion-list-header>
+		
+		<ion-item>
+			<ion-label>{{ 'Consumer' | translate }}</ion-label>
+			<ion-radio color="primary" value="Customer" ></ion-radio>
+		</ion-item>
+
+		<!-- <ion-item>
+			<ion-label>{{'Retailer' | translate}}</ion-label>
+			<ion-radio value="Retailer" ></ion-radio>
+		</ion-item> -->
+		
+		<!-- <ion-item>
+			<ion-label>Executive</ion-label>
+			<ion-radio  value="Employee"></ion-radio>
+		</ion-item> -->
+		
+		
+		<ion-item>
+			<ion-label>{{'Plumber' | translate}}</ion-label>
+			<ion-radio color="primary"  value="Plumber"></ion-radio>
+		</ion-item>
+		
+		<!-- <ion-item>
+			<ion-label>Dealer/Distributor</ion-label>
+			<ion-radio  value="DrLogin"></ion-radio>
+		</ion-item> -->
+	</ion-list>
+	
+	
+</ion-content>
+
+<ion-footer>
+	<button ion-button [disabled]="!data?.registerType" (click)="goToRegisterPage()" color="primary" class="signup-btn">
+		{{'Go' | translate}}
+		 <i class="material-icons">arrow_forward</i></button>
+</ion-footer>
+

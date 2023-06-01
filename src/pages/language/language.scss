@@ -1,0 +1,66 @@
+page-language {
+    ion-list
+    {
+        border-radius: 10px;
+        border: 1px solid #dedede;
+
+        
+        ion-item
+        {
+            padding: 0px !important;
+            min-height: 55px !important;
+            
+            .item-inner
+            {
+                padding-left: 16px;
+                
+                ion-label
+                {
+                    margin: 0px;
+                }
+            }
+
+
+            &:last-child{
+                border-bottom-left-radius: 8px;
+                border-bottom-right-radius: 8px;
+            }
+            
+           
+        }
+        &.border-heading {
+            background: #f8f8f8;
+            margin-bottom: 0px;
+            border-top-left-radius: 8px;
+            border-top-right-radius: 8px;
+            border-top: 0px;
+
+
+            .item-inner {
+                .input-wrapper {
+                    ion-label {
+                        font-size: 16px;
+                        font-weight: 600;
+                        color: #000;
+                        margin-left: 15px;
+                        &::after {
+                            content: "";
+                            position: absolute;
+                            top: 20px;
+                            left: 0px;
+                            width: 22px;
+                            background: #374d78;
+                            height: 5px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .ragistration-fields1{
+        padding: 16px;
+        background: #fff;
+        
+       
+    }
+}

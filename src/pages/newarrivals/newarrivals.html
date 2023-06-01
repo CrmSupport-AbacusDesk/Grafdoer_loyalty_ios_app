@@ -1,0 +1,77 @@
+<ion-header class="main-header" [ngClass] ="{'remove': usertype == 'Plumber'}">
+    <ion-navbar>
+        <ion-title> {{ 'New Arrivals' | translate }} </ion-title>
+    </ion-navbar>
+    <ion-toolbar class="primary-bg">
+        <div class="search add-search">
+            <div class="filter">
+                <ion-searchbar placeholder="{{ 'Search' | translate }}" type='text' name='search'  [(ngModel)]="filter.search" (ngModelChange)="getProductList(cat_id,filter.search)"></ion-searchbar>
+            </div>
+            <!-- <div class="found width-remove">
+                <h3>{{prod_list.length}}/{{total_count}}</h3>
+            </div> -->
+        </div>
+    </ion-toolbar>
+</ion-header>
+
+      
+      <ion-content class="listing grid-listing category-product sub-category">
+        <ion-refresher (ionRefresh)="doRefresh($event)">
+            <ion-refresher-content  pullingIcon="arrow-dropdown" pullingText="Pull to refresh" refreshingSpinner="circles" refreshingText="Refreshing...">
+            </ion-refresher-content>
+        </ion-refresher>
+        
+        <div *ngIf="no_rec" class="data-not">
+            <img  src="assets/imgs/data-not-found.png">
+        </div>
+        
+        
+        <div *ngIf="prod_list.length"class="main-div"> 
+            <div class="sub-listing tydo-list p0">
+                <div class="tydo-item">
+                    <h3>{{ 'New Arrivals' | translate }}<br><span>"{{prod_list.length}}" Products Found</span> </h3>
+                    <!-- <img src="http://phpstack-83335-1980946.cloudwaysapps.com/dd_api/app/uploads/newarrival.jpg"> -->
+                    <img src="assets/imgs/banner.png">
+                </div>
+    
+                <div>
+                    <div class="grid-layout">
+                        <div class="product-data two-column" (click)="goOnProductSubDetailPage(list.id)" *ngFor="let list of prod_list;let i=index">
+                            <div class="image-thubmnail">
+                                <img *ngIf="list.actual_image_name" src="{{imageUrl + list.actual_image_name}}">
+                                <i class="material-icons" *ngIf="!list.actual_image_name">perm_media</i>
+                            </div>
+                            <div class="content">
+                                <h6>{{list.product_name}}</h6>
+                                <div class="code">
+                                    <span>{{list.material_code}}</span>
+                                    <span>&#x20B9; {{list.price}}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    
+                    <!-- <div *ngIf="no_rec" class="data-not">
+                        <img src="assets/imgs/data-not-found.png">
+                    </div> -->
+                </div>
+            </div>
+
+            <ion-infinite-scroll threshold="100px" (ionInfinite)="loadData($event)"  *ngIf="flag!=1">
+                <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Loading more data...">
+                </ion-infinite-scroll-content>
+                <!-- <div class="sub-listing tydo-list p0">
+                    <ion-list class="skleton-box-2"  *ngFor="let row of skelton"></ion-list>
+                </div> -->
+            </ion-infinite-scroll>
+        </div>
+      
+        <!-- <div class="main-div" *ngIf="!prod_list.length && !no_rec"> 
+            <div class="sub-listing tydo-list p0">
+                <div class="skleton-box-1"></div>
+                <ion-list class="skleton-box-2"  *ngFor="let row of skelton"></ion-list>
+            </div>
+        </div> -->
+      </ion-content>
+      
